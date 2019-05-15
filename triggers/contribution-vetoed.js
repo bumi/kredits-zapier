@@ -73,7 +73,7 @@ module.exports = {
     // returned records, and have obviously dummy values that we can show to any user.
     sample: {
       id: 'xxxxxx',
-      vetoedByAccount: '0x2109153bF9a45B73DE56fb44F17C50895786E788',
+      vetoedByAccount: '0x2101153KF9a45B73DE56fb44F17A30895786F708',
       contributorId: 4,
       amount: 500,
       contributionId: 23,
