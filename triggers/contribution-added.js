@@ -49,7 +49,13 @@ module.exports = {
           eventDetails = eventDetails.filter(e => e.contributorId === parseInt(contributorId) )
         }
         let results = eventDetails.map(async (e) => {
-          let contribution = await kredits.Contribution.getById(e.id);
+          let contribution = {}
+          try {
+            contribution = await kredits.Contribution.getById(e.id);
+          } catch(error) {
+            z.console.log('Failed to load contribution. (IPFS error?!) ' + e.id);
+            z.console.log(error.message);
+          }
           return {
             id: z.hash('md5', e.id + kredits.Contribution.contract.address),
             contributorId: e.contributorId,
