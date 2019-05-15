@@ -1,5 +1,6 @@
 const addContribution = require('./creates/add-contribution');
 const addContributor = require('./creates/add-contributor');
+const claimContribution = require('./creates/claim-contribution');
 const getContributor = require('./searches/get-contributor');
 const getContribution = require('./searches/get-contribution');
 const contributionAdded = require('./triggers/contribution-added');
@@ -38,6 +39,7 @@ const App = {
 
   creates: {
     [addContribution.key]: addContribution,
+    [claimContribution.key]: claimContribution,
     [addContributor.key]: addContributor
   }
 };

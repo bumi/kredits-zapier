@@ -13,6 +13,8 @@ const addContribution = (z, bundle) => {
     ipfsConfig: { host: 'ipfs.infura.io', port: '5001', protocol: 'https' }
   };
   return new Kredits(ethProvider, signer, options).init().then(async (kredits) => {
+    const walletTransactionCount = await kredits.provider.getTransactionCount(kredits.signer.address);
+    let nonce = walletTransactionCount+1;
 
     let contributor = await kredits.Contributor.getById(bundle.inputData.contributorId);
     let amount = parseInt(bundle.inputData.amount) * parseInt(bundle.inputData.multiplier || '1');
@@ -30,7 +32,7 @@ const addContribution = (z, bundle) => {
       details: {}
     };
 
-    return kredits.Contribution.addContribution(contributionAttr)
+    return kredits.Contribution.addContribution(contributionAttr, { nonce: nonce++ })
       .then(tx => {
         contributionAttr.transactionHash = tx.hash;
         return contributionAttr;

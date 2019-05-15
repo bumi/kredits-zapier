@@ -11,7 +11,9 @@ const addContributor = (z, bundle) => {
     apm: 'open.aragonpm.eth',
     ipfsConfig: { host: 'ipfs.infura.io', port: '5001', protocol: 'https' }
   };
-  return new Kredits(ethProvider, signer, options).init().then(kredits => {
+  return new Kredits(ethProvider, signer, options).init().then(async (kredits) => {
+    const walletTransactionCount = await kredits.provider.getTransactionCount(kredits.signer.address);
+    let nonce = walletTransactionCount+1;
 
     let contributorAttr = {
       account: bundle.inputData.account,
@@ -23,7 +25,7 @@ const addContributor = (z, bundle) => {
       gitea_username: bundle.inputData.giteaUsername,
     };
 
-    return kredits.Contributor.add(contributionAttr)
+    return kredits.Contributor.add(contributionAttr, { nonce: nonce++ })
       .then(tx => {
         contributorAttr.transactionHash = tx.hash;
         return contributionAttr;
