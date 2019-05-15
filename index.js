@@ -2,6 +2,7 @@ const addContribution = require('./creates/add-contribution');
 const getContributor = require('./searches/get-contributor');
 const getContribution = require('./searches/get-contribution');
 const contributionAdded = require('./triggers/contribution-added');
+const contributionVetoed = require('./triggers/contribution-vetoed');
 
 const handleHTTPError = (response, z) => {
   if (response.status >= 400) {
@@ -30,14 +31,14 @@ const App = {
 
   // If you want your trigger to show up, you better include it here!
   triggers: {
-    [contributionAdded.key]: contributionAdded
+    [contributionAdded.key]: contributionAdded,
+    [contributionVetoed.key]: contributionVetoed
   },
 
   // If you want your searches to show up, you better include it here!
   searches: {
     [getContributor.key]: getContributor,
     [getContribution.key]: getContribution
-
   },
 
   // If you want your creates to show up, you better include it here!
