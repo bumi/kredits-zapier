@@ -1,5 +1,6 @@
 const addContribution = require('./creates/add-contribution');
 const getContributor = require('./searches/get-contributor');
+const contributionAdded = require('./triggers/contribution-added');
 
 const handleHTTPError = (response, z) => {
   if (response.status >= 400) {
@@ -28,6 +29,7 @@ const App = {
 
   // If you want your trigger to show up, you better include it here!
   triggers: {
+    [contributionAdded.key]: contributionAdded
   },
 
   // If you want your searches to show up, you better include it here!
