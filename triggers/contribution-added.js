@@ -35,7 +35,7 @@ module.exports = {
         let contributorId = bundle.inputData.contributorId || null;
 
         const latestBlock = await kredits.provider.getBlockNumber();
-        let fromBlock = latestBlock - 3000; // last 300 blocks
+        let fromBlock = latestBlock - 300; // last 300 blocks
         let event = kredits.Contribution.contract.interface.events.ContributionAdded;
         let logs = await kredits.provider.getLogs({
           fromBlock: fromBlock,
