@@ -7,13 +7,14 @@ module.exports = {
   noun: 'Kredits Contributor',
   display: {
     label: 'Find Contributor',
-    description: 'Search for a contributor by account details.'
+    description: 'Search for a contributor by account details or ID.'
   },
 
   operation: {
     inputFields: [
       { key: 'daoAddress', label: 'DAO address', required: true },
       { key: 'network', label: 'Ethereum network', required: true, choices: { rinkeby: 'Rinkeby' } },
+      { key: 'contributorId', label: 'Contributor ID', required: false },
       {
         key: 'site',
         type: 'string',
@@ -45,6 +46,10 @@ module.exports = {
         ipfsConfig: { host: 'ipfs.infura.io', port: '5001', protocol: 'https' }
       };
       return new Kredits(ethProvider, null, options).init().then(kredits => {
+        if (bundle.inputData.contributorId) {
+          return kredits.Contributor.getById(bundle.inputData.contributorId)
+            .then(c => { return [c] });
+        }
         let search = { site: bundle.inputData.site };
         if (bundle.inputData.accountUid) {
           search.uid = parseInt(bundle.inputData.accountUid);
