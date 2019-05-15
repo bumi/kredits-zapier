@@ -1,4 +1,5 @@
 const addContribution = require('./creates/add-contribution');
+const addContributor = require('./creates/add-contributor');
 const getContributor = require('./searches/get-contributor');
 const getContribution = require('./searches/get-contribution');
 const contributionAdded = require('./triggers/contribution-added');
@@ -43,7 +44,8 @@ const App = {
 
   // If you want your creates to show up, you better include it here!
   creates: {
-    [addContribution.key]: addContribution
+    [addContribution.key]: addContribution,
+    [addContributor.key]: addContributor
   }
 };
 
