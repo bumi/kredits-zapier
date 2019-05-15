@@ -1,0 +1,28 @@
+{
+  "name": "kredits-zapier",
+  "version": "1.0.0",
+  "description": "Zapier triggers and actions for Kredits DAOs",
+  "repository": "bumi/kredits-zapier",
+  "author": "Michael Bumann <hello@michaelbumann.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --recursive"
+  },
+  "engines": {
+    "node": "8.10.0",
+    "npm": ">=5.6.0"
+  },
+  "dependencies": {
+    "ethers": "4.0.27",
+    "kosmos-schema": "bumi/kosmos-schemas",
+    "kredits-contracts": "^5.3.0",
+    "moment": "^2.24.0",
+    "zapier-platform-core": "8.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.0",
+    "zapier-platform-cli": "^8.1.0"
+  }
+}
