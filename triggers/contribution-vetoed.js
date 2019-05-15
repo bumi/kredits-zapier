@@ -1,23 +1,17 @@
 const Kredits = require('kredits-contracts');
 const ethers = require('ethers');
-// We recommend writing your triggers separate like this and rolling them
-// into the App definition at the end.
-module.exports = {
-  key: 'contribution',
 
-  // You'll want to provide some helpful display labels and descriptions
-  // for users. Zapier will put them into the UX.
+module.exports = {
+  key: 'contribution_vetoed',
+
   noun: 'Kredits Contribution',
   display: {
     label: 'Kredits Contributions Vetoed',
     description: 'Trigger when a Kredits contribution gets vetoed.'
   },
 
-  // `operation` is where the business logic goes.
   operation: {
 
-    // `inputFields` can define the fields a user could provide,
-    // we'll pass them in as `bundle.inputData` later.
     inputFields: [
       { key: 'daoAddress', label: 'DAO address', required: true },
       { key: 'network', label: 'Ethereum network', required: true, choices: { rinkeby: 'Rinkeby' } },
@@ -68,9 +62,6 @@ module.exports = {
 
     },
 
-    // In cases where Zapier needs to show an example record to the user, but we are unable to get a live example
-    // from the API, Zapier will fallback to this hard-coded sample. It should reflect the data structure of
-    // returned records, and have obviously dummy values that we can show to any user.
     sample: {
       id: 'xxxxxx',
       vetoedByAccount: '0x2101153KF9a45B73DE56fb44F17A30895786F708',
@@ -84,14 +75,6 @@ module.exports = {
       url: 'http://kredits.kosmos.org'
     },
 
-    // If the resource can have fields that are custom on a per-user basis, define a function to fetch the custom
-    // field definitions. The result will be used to augment the sample.
-    //   outputFields: [
-    //    () => { return []; }
-    //   ]
-    // For a more complete example of using dynamic fields see
-    // https://github.com/zapier/zapier-platform-cli#customdynamic-fields.
-    // Alternatively, a static field definition should be provided, to specify labels for the fields
     outputFields: [
       {key: 'id', label: 'ID'},
       {key: 'vetoedByAccount', label: 'Veto by account'},
@@ -104,6 +87,6 @@ module.exports = {
       {key: 'claimed', label: 'Claimed?'},
       {key: 'vetoed', label: 'Vetoed?'}
     ]
-  },
+  }
 
 };

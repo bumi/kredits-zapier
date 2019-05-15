@@ -32,7 +32,7 @@ const addContributor = (z, bundle) => {
 };
 
 module.exports = {
-  key: 'contributor',
+  key: 'add_contributor',
   noun: 'Kredits contributor',
 
   display: {

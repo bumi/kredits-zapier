@@ -2,7 +2,7 @@ const Kredits = require('kredits-contracts');
 const ethers = require('ethers');
 
 module.exports = {
-  key: 'contributor',
+  key: 'get_contributor',
 
   noun: 'Kredits Contributor',
   display: {
