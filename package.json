@@ -1,6 +1,6 @@
 {
   "name": "kredits-zapier",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Zapier triggers and actions for Kredits DAOs",
   "repository": "bumi/kredits-zapier",
   "author": "Michael Bumann <hello@michaelbumann.com>",
