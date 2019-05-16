@@ -5,6 +5,7 @@ const getContributor = require('./searches/get-contributor');
 const getContribution = require('./searches/get-contribution');
 const contributionAdded = require('./triggers/contribution-added');
 const contributionVetoed = require('./triggers/contribution-vetoed');
+const contributionClaimed = require('./triggers/contribution-claimed');
 
 const handleHTTPError = (response, z) => {
   if (response.status >= 400) {
@@ -29,7 +30,8 @@ const App = {
 
   triggers: {
     [contributionAdded.key]: contributionAdded,
-    [contributionVetoed.key]: contributionVetoed
+    [contributionVetoed.key]: contributionVetoed,
+    [contributionClaimed.key]: contributionClaimed
   },
 
   searches: {
