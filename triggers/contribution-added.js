@@ -19,9 +19,9 @@ module.exports = {
     // `inputFields` can define the fields a user could provide,
     // we'll pass them in as `bundle.inputData` later.
     inputFields: [
-      {key: 'contributorId', label: 'Contributor ID', type: 'integer',  helpText: 'Kredits Contributor ID'},
       { key: 'daoAddress', label: 'DAO address', required: true },
       { key: 'network', label: 'Ethereum network', required: true, choices: { rinkeby: 'Rinkeby' } },
+      { key: 'contributorId', label: 'Contributor ID', type: 'integer',  helpText: 'Kredits Contributor ID' }
     ],
 
     perform: (z, bundle) => {

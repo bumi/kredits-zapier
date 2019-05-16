@@ -48,6 +48,7 @@ module.exports = {
           return {
             id: z.hash('md5', e.id + kredits.Contribution.contract.address),
             vetoedByAccount: e.vetoedByAccount,
+            contributorId: contribution.contributorId,
             amount: e.amount,
             contributionId: e.id,
             vetoed: contribution.vetoed,
