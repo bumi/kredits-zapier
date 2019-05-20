@@ -14,7 +14,7 @@ const claimContribution = (z, bundle) => {
   return new Kredits(ethProvider, signer, options).init().then(async (kredits) => {
     const latestBlock = await kredits.provider.getBlockNumber();
     const walletTransactionCount = await kredits.provider.getTransactionCount(kredits.signer.address);
-    let nonce = walletTransactionCount+1;
+    let nonce = walletTransactionCount;
 
     let contributionIds = [];
     if (bundle.inputData.contributionId) {

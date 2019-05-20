@@ -13,7 +13,7 @@ const addContributor = (z, bundle) => {
   };
   return new Kredits(ethProvider, signer, options).init().then(async (kredits) => {
     const walletTransactionCount = await kredits.provider.getTransactionCount(kredits.signer.address);
-    let nonce = walletTransactionCount+1;
+    let nonce = walletTransactionCount;
 
     let contributorAttr = {
       account: bundle.inputData.account,

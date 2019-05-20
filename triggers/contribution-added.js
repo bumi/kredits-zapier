@@ -49,9 +49,11 @@ module.exports = {
           eventDetails = eventDetails.filter(e => e.contributorId === parseInt(contributorId) )
         }
         let results = eventDetails.map(async (e) => {
-          let contribution = {}
+          let contribution = {};
+          let contributor = {};
           try {
             contribution = await kredits.Contribution.getById(e.id);
+            contributor = await kredits.Contributor.getById(e.contributorId);
           } catch(error) {
             z.console.log('Failed to load contribution. (IPFS error?!) ' + e.id);
             z.console.log(error.message);
@@ -59,6 +61,8 @@ module.exports = {
           return {
             id: z.hash('md5', e.id + kredits.Contribution.contract.address),
             contributorId: e.contributorId,
+            contributorName: contributor.name,
+            contributorIpfsHash: contributor.ipfsHash,
             amount: e.amount,
             contributionId: e.id,
             vetoed: contribution.vetoed,
@@ -79,6 +83,8 @@ module.exports = {
     sample: {
       id: 'xxxxxx',
       contributorId: 4,
+      contributorName: 'Satoshi',
+      contributorIpfsHash: 'QmfamjKpn7eTtLB4sPRFVndePqz9ksIJcqSKXknPZcTV2Fd',
       amount: 500,
       contributionId: 23,
       vetoed: false,
@@ -99,6 +105,8 @@ module.exports = {
     outputFields: [
       {key: 'id', label: 'ID'},
       {key: 'contributorId', label: 'Contributor ID'},
+      {key: 'contributorName', label: 'Contributor Name'},
+      {key: 'contributorIpfsHash', label: 'Contributor IPFS hash'},
       {key: 'contributionId', label: 'Contribution ID'},
       {key: 'amount', label: 'Amount'},
       {key: 'description', label: 'Description'},
